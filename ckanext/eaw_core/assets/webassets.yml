@@ -1,0 +1,14 @@
+# eaw_core-js:
+#   filter: rjsmin
+#   output: ckanext-eaw_core/%(version)s-eaw_core.js
+#   contents:
+#     - js/eaw_core.js
+#   extra:
+#     preload:
+#       - base/main
+
+# eaw_core-css:
+#   filter: cssrewrite
+#   output: ckanext-eaw_core/%(version)s-eaw_core.css
+#   contents:
+#     - css/eaw_core.css
