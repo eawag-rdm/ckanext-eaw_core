@@ -49,7 +49,7 @@ To temporary patch the CKAN configuration for the duration of a test you can use
 """
 import pytest
 import ckanext.eaw_core.plugin as plugin
-from ckan.lib.helpers import plugin_loaded
+#from ckan.lib.helpers import plugin_loaded
 
 
 @pytest.mark.ckan_config("ckan.plugins", "eaw_core")
