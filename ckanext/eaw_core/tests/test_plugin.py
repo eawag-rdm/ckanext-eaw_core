@@ -48,11 +48,11 @@ To temporary patch the CKAN configuration for the duration of a test you can use
         pass
 """
 import pytest
-import ckanext.eaw_theme.plugin as plugin
+import ckanext.eaw_core.plugin as plugin
 from ckan.lib.helpers import plugin_loaded
 
 
-@pytest.mark.ckan_config("ckan.plugins", "eaw_theme")
+@pytest.mark.ckan_config("ckan.plugins", "eaw_core")
 @pytest.mark.usefixtures("with_plugins")
 def test_plugin():
     assert plugin_loaded("eaw_core")
