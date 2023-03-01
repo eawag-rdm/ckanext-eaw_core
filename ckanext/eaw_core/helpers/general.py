@@ -1,3 +1,4 @@
+import datetime
 import json
 import re
 
@@ -5,6 +6,8 @@ import ckan.plugins.toolkit as toolkit
 
 from ckanext.eaw_core import logger
 from ckanext.eaw_core.helpers.get_user import eaw_helpers_geteawuser
+from ckanext.eaw_core.utils.eaw_schema_set_default import eaw_schema_set_default_invalid_input, \
+    eaw_schema_set_default_choose_default, eaw_schema_set_default_set_values
 
 
 # TODO: tests
@@ -134,3 +137,27 @@ def eaw_theme_patch_linked_user(user, maxlength=0, avatar=20):
     )
 
     return toolkit.literal(res)
+
+
+# TODO: check if empty list is an invalid or valid input, for now set to invalid
+def eaw_schema_set_default(values, default_value, field=""):
+    ## Only set default value if current value is empty string or None
+    ## or a list containing only '' or None.
+    if eaw_schema_set_default_invalid_input(values, default_value):
+        return values
+
+    val = eaw_schema_set_default_choose_default(default_value)
+
+    # deal with list/string - duality
+    values = eaw_schema_set_default_set_values(values, val)
+
+    return values
+
+
+def eaw_schema_embargo_interval(interval_in_days):
+    """Returns current date and max-date
+    according to <interval> in format YYYY-MM-DD.
+    """
+    now = datetime.date.today()
+    maxdate = now + datetime.timedelta(days=interval_in_days)
+    return {"now": now.isoformat(), "maxdate": maxdate.isoformat()}

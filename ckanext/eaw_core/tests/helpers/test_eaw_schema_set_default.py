@@ -4,7 +4,7 @@ import pytest
 from ckan.plugins.toolkit import Invalid
 from ckan.tests.factories import User
 
-from ckanext.eaw_core.validators.other import eaw_schema_set_default
+from ckanext.eaw_core.helpers import eaw_schema_set_default
 
 
 @pytest.mark.usefixtures("with_plugins")

@@ -5,8 +5,8 @@ from ckanext.eaw_core.helpers.general import eaw_schema_human_filesize
 from ckanext.eaw_core.utils.formatting import (
     add_zulu_to_timestamp,
     load_datetime_strings,
-    output_daterange,
 )
+from ckanext.eaw_core.validators import output_daterange
 from ckanext.eaw_core.utils.general import (
     error_before_validation,
     format_to_list_of_strings,
