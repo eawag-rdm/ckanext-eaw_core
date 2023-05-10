@@ -3,6 +3,7 @@ import json
 import re
 
 import ckan.plugins.toolkit as toolkit
+from ckan.lib.helpers import linked_user
 
 from ckanext.eaw_core import logger
 from ckanext.eaw_core.helpers.get_user import eaw_helpers_geteawuser
