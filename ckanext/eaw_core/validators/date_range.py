@@ -21,15 +21,14 @@ def vali_daterange(values):
       + insert trailing "Z" for points in time if necessary
       + add brackets if necessary
     """
-
     values = load_datetime_strings(values)
     valid_values = []
     for value in values:
         value = value.strip()
         # datetime range
         if "TO" in value:
-            start, end = value.strip("[]").split(" TO ")
-            value = f"[{add_zulu_to_timestamp(start)} TO {add_zulu_to_timestamp(end)}]"
+            start, end = value.strip("[]").split("TO")
+            value = f"[{add_zulu_to_timestamp(start.strip())} TO {add_zulu_to_timestamp(end.strip())}]"
         else:
             value = add_zulu_to_timestamp(value)
 
